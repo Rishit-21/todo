@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+body{
+  font-family: 'Poppins';
+  background: white;
+  //background-size: contain;  
+}
+.heading{
+    display: block;
+    text-align: center;
+    font-size: 25px;
+}
+.box{
+    align-content: center;
+    margin-left: 0%;
+    width: 70%;
+    
+   .box-btn{
+    align-items: left;
+    display: block;
+    //float: right;
+    margin-left: auto;
+    width: auto;
+    line-height: 1em;
+    background-color: white;
+    border-left-width: 0px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+    border-right-width: 0px;
+   }
+   
+        .text{
+            text-align: center;
+        }
+    
+
+}
+
+.taskList{
+    display: -webkit-box;
+    align-content: center;
+    margin-left: 1em;
+    width: 100%;
+    margin-top: 1em;
+    justify-content: space-between;
+    line-height: 1.5em;
+
+    span{
+        //width: 500%;
+        align-content: center;
+        float: right;
+        input{
+            width:auto;
+            margin: 0;
+            padding: 0;
+            justify-content: space-between;
+        }
+    }
+    .check-c{
+        
+        //margin-left: 10em;
+        //line-height: 2.5%;
+        background-color: white;
+        border-left-width: 0px;
+        padding-bottom: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        border-bottom-width: 0px;
+    }
+    .edits{
+        justify-content: space-between;
+        display: flex;
+
+    }
+    .edit{
+        background-color: white;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        margin-right: .5em;
+    }
+    .delete{
+        background-color: white;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+
+    }
+    
+
+
+    
+}
+
+.allOther{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+    align-content: center;
+    .add{
+        border: solid black;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .search{
+        border: solid black;
+        padding-right: 10px;
+        padding-left: 10px;
+
+    }
+    .all-btn{
+        display: flex;
+        
+    }
+}

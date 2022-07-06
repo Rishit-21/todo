@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+body {
+  font-family: "Poppins";
+  background: white;
+}
+
+.heading {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+}
+
+.box {
+  align-content: center;
+  margin-left: 0%;
+  width: 70%;
+}
+.box .box-btn {
+  align-items: left;
+  display: block;
+  margin-left: auto;
+  width: auto;
+  line-height: 1em;
+  background-color: white;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+}
+.box .text {
+  text-align: center;
+}
+
+.taskList {
+  display: -webkit-box;
+  align-content: center;
+  margin-left: 1em;
+  width: 100%;
+  margin-top: 1em;
+  justify-content: space-between;
+  line-height: 1.5em;
+}
+.taskList span {
+  align-content: center;
+  float: right;
+}
+.taskList span input {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+}
+.taskList .check-c {
+  background-color: white;
+  border-left-width: 0px;
+  padding-bottom: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+}
+.taskList .edits {
+  justify-content: space-between;
+  display: flex;
+}
+.taskList .edit {
+  background-color: white;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  margin-right: 0.5em;
+}
+.taskList .delete {
+  background-color: white;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+}
+
+.allOther {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2em;
+  align-content: center;
+}
+.allOther .add {
+  border: solid black;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.allOther .search {
+  border: solid black;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.allOther .all-btn {
+  display: flex;
+}/*# sourceMappingURL=style.css.map */
