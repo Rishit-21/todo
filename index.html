@@ -10,41 +10,59 @@
 </head>
 <body>
     <div class="heading"><h2>TODO LIST</h2></div>
-    <div class="box"><button class="box-btn"><input type="textbox" placeholder="Enter task" class="text"></button></div>
-    <div class="taskList">
-        <div class = 'taskName'>
-           <button class="check-c"><input type="checkbox" >a</button><span><input type="textbox" value="a"></span> 
+    <div class="box"><span class="box-btn"><input type="textbox" placeholder="Enter task" class="text" name="boxBtn"></span></div>
+    <div class="taskmain">
+        <div class="taskList">
+            <div class = 'taskName'>
+                <input type="checkbox" class="check">a<span><input type="textbox" value="a"></span> 
+            </div>
+            <div class="edits">
+                <button class="edit"><img src="edit.svg" alt="edit" class="editIcon"></button>
+                <button class="delete"><i class="fa-solid fa-delete-left deletebtn"></i></button>
+            </div>
         </div>
-        <div class="edits"><button class="edit"><img src="edit.svg" alt="edit" class="editIcon"></button><button class="delete"><i class="fa-solid fa-delete-left deletebtn"></i></button></div>
     </div>
     <div class="allOther">
-        <div class="add"><i class="fa-regular fa-plus"></i></div>
-        <div class="search"><i class="fa-solid fa-magnifying-glass"></i></div>
-        <div class=" action">
-            <select name="action" class="actionS">
-                <option value="act" class="action--a" selected>Action</option>
-                <option value="selectAll" class="select">Select All</option>
-                <option value="unselectAll" class="un-select">Unselect All</option>
-                <option value="unselectAll" class="deleteselect">Delete all selected</option>
-            </select>
+        <div class="add-search-btn">
+            <div><button class="add-btn  add btn--0  "><i class="fa-regular fa-plus"></i></button></div>
+            <div><button class="search-btn search btn--1"><i class="fa-solid fa-magnifying-glass"></i></button></div>
         </div>
-        <div class="sort">
-            <select class="sort">
-                <option value="sort" class="Sort" selected>Sort</option>
-                <option value="A-Z" class="A-Z">A-Z</option>
-                <option value="Z-A" class="Z-A">A-Z</option>
-                <option value="newest" class="newest">NEWEST</option>
-                <option value="oldest" class="oldest">OLDEST</option>
-            </select>
-        </div>
+        <div class="drop-downs">
+            <div class=" action">
+                <button class="action-btn">
+                    <select name="action" class="actionS">
+                        <option value="act" class="action--a" selected>Action</option>
+                        <option value="selectAll" class="select">Select All</option>
+                        <option value="unselectAll" class="un-select">Unselect All</option>
+                        <option value="unselectAll" class="deleteselect">Delete all selected</option>
+                    </select>
+                </button>
+ 
+            </div>
+            <div class="sort">
+                <button class="sort-btn">
+                    <select class="sort">
+                        <option value="sort" class="Sort" selected>Sort</option>
+                        <option value="A-Z" class="A-Z">A-Z</option>
+                        <option value="Z-A" class="Z-A">A-Z</option>
+                        <option value="newest" class="newest">NEWEST</option>
+                        <option value="oldest" class="oldest">OLDEST</option>
+                    </select>
 
-        <div class="all-btn">
-            <div class="all-a"><button>ALl</button></div>
-            <div class="active-a"><button>Active</button></div>
-            <div class="compeleted-a"><button>Completed</button></div>
+                </button>
+
+            </div>
+        </div>
+ 
+
+        <div class="all-btn ">
+            <div class="all-a " ><button class="all-a-btn btn--0 ">ALl</button></div>
+            <div class="active-a "><button class="active-a-btn btn--1">Active</button></div>
+            <div class="compeleted-a "><button class="completed-a-btn btn--2">Completed</button></div>
         </div>
 
     </div>
+    <script src="todo.js"></script>
 
 </body>
 </html>

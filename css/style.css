@@ -2,6 +2,8 @@
 body {
   font-family: "Poppins";
   background: white;
+  width: 80%;
+  margin: auto;
 }
 
 .heading {
@@ -14,12 +16,13 @@ body {
   align-content: center;
   margin-left: 0%;
   width: 70%;
+  display: none;
 }
 .box .box-btn {
   align-items: left;
-  display: block;
+  display: flex;
   margin-left: auto;
-  width: auto;
+  width: 200%;
   line-height: 1em;
   background-color: white;
   border-left-width: 0px;
@@ -27,14 +30,17 @@ body {
   border-top-width: 0px;
   border-right-width: 0px;
 }
+.box .box-btn input {
+  width: 70%;
+}
 .box .text {
   text-align: center;
 }
 
 .taskList {
-  display: -webkit-box;
+  display: flex;
   align-content: center;
-  margin-left: 1em;
+  margin: left 0;
   width: 100%;
   margin-top: 1em;
   justify-content: space-between;
@@ -43,9 +49,10 @@ body {
 .taskList span {
   align-content: center;
   float: right;
+  display: none;
 }
 .taskList span input {
-  width: auto;
+  width: 150%;
   margin: 0;
   padding: 0;
   justify-content: space-between;
@@ -79,21 +86,61 @@ body {
 }
 
 .allOther {
-  display: flex;
+  display: grid;
+  grid-template-rows: 53px 55px;
+  grid-template-columns: 142px 253px;
   justify-content: space-between;
-  margin-top: 2em;
+  margin-top: 1em;
+  width: 60%;
   align-content: center;
 }
-.allOther .add {
-  border: solid black;
-  padding-right: 10px;
-  padding-left: 10px;
+.allOther .add-search-btn {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
 }
-.allOther .search {
-  border: solid black;
-  padding-right: 10px;
-  padding-left: 10px;
+.allOther .add-btn {
+  background-color: white;
+  color: black;
+}
+.allOther .search-btn {
+  background-color: white;
+}
+.allOther .btn--active {
+  background-color: #0078ff;
+  color: white;
+  display: hidden;
+}
+.allOther .drop-downs {
+  display: flex;
+  justify-content: space-between;
+  width: auto;
+}
+.allOther .action-btn {
+  background-color: white;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
+}
+.allOther .sort-btn {
+  background-color: white;
+  border-left-width: 0px;
+  border-bottom-width: 0px;
+  border-top-width: 0px;
+  border-right-width: 0px;
 }
 .allOther .all-btn {
   display: flex;
+  margin-left: 80%;
+  margin-top: 2%;
+}
+.allOther .all-btn .btn--all {
+  background-color: #0078ff;
+  color: white;
+  border-color: black;
+}
+
+.hidden {
+  display: none;
 }/*# sourceMappingURL=style.css.map */

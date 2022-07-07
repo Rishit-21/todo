@@ -3,6 +3,8 @@ body{
   font-family: 'Poppins';
   background: white;
   //background-size: contain;  
+  width: 80%;
+  margin: auto;
 }
 .heading{
     display: block;
@@ -13,11 +15,12 @@ body{
     align-content: center;
     margin-left: 0%;
     width: 70%;
-    display: block;
+    display: none;
+    //display: block;
     
    .box-btn{
     align-items: left;
-    display: block;
+    display: flex;
     //float: right;
     margin-left: auto;
     width: 200%;
@@ -28,7 +31,7 @@ body{
     border-top-width: 0px;
     border-right-width: 0px;
     input{
-        width: 200%;
+        width: 70%;
     }
    }
    
@@ -40,20 +43,23 @@ body{
 }
 
 .taskList{
-    display: -webkit-box;
+    //display: none;
+    display: flex;
     align-content: center;
-    margin-left: 1em;
+    margin: left 0;
     width: 100%;
     margin-top: 1em;
     justify-content: space-between;
     line-height: 1.5em;
+    //display: hidden;
 
     span{
         //width: 500%;
         align-content: center;
         float: right;
+        display: none;
         input{
-            width:auto;
+            width:150%;
             margin: 0;
             padding: 0;
             justify-content: space-between;
@@ -98,23 +104,138 @@ body{
 }
 
 .allOther{
-    display: flex;
+    display:grid;
+    grid-template-rows: 53px 55px;
+    grid-template-columns: 142px 253px;
     justify-content: space-between;
-    margin-top: 2em;
+    margin-top: 1em;
+    width: 60%;
+    //margin: auto;
     align-content: center;
-    .add{
-        border: solid black;
-        padding-right: 10px;
-        padding-left: 10px;
-    }
-    .search{
-        border: solid black;
-        padding-right: 10px;
-        padding-left: 10px;
+
+    .add-search-btn{
+        display:flex;
+        justify-content: space-evenly;
+        //width:auto;
+        align-content: center;
 
     }
-    .all-btn{
-        display: flex;
+    // .add{
+    //     //border: solid black;
+    //     //padding-left: 1%;
+    //     //padding-right: .5;
+    //     //width: auto;
+    //     // :hover{
+    //     //     cursor: pointer;
+    //     //     background-color: #0078ff;
+    //     //     color: white;
+    //     // }
+
+    // }
+
+    .add-btn{
+        background-color: white;
+        // border-left-width: 0px;
+        // border-bottom-width: 0px;
+        // border-top-width: 0px;
+        // border-right-width: 0px;
+        color:black;
+
+
+
+    }
+    .search-btn{
+        background-color: white;
+        // border-left-width: 0px;
+        // border-bottom-width: 0px;
+        // border-top-width: 0px;
+        // border-right-width: 0px;
+
         
     }
+    .btn--active{
+        background-color: #0078ff;
+        color: white;
+        display: hidden;
+
+    }
+
+    
+    // .search{
+    //     // border: solid black;
+    //     // // padding-right: 10px;
+    //     // // padding-left: 10px;
+    //     // padding-left: 1%;
+    //     // padding-right: .5;
+    //     // width: auto;
+    //     // :hover{
+    //     //     cursor: pointer;
+    //     //     background-color: #0078ff;
+    //     //     color: white;
+    //     // }
+
+    // }
+    // .btn--all{
+
+    // }
+
+    .drop-downs{
+        display:flex;
+        justify-content: space-between;
+        width: auto;
+        
+
+
+    }
+    .action-btn{
+        background-color: white;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+        
+
+    }
+    .sort-btn{
+        background-color: white;
+        border-left-width: 0px;
+        border-bottom-width: 0px;
+        border-top-width: 0px;
+        border-right-width: 0px;
+    }
+
+    .all-btn{
+        display: flex;
+        margin-left: 80%;
+        margin-top: 2%;
+        .btn--all{
+            background-color: #0078ff;
+            color:white;
+            border-color: black;
+            // ::shadow{
+            //     border-color: #0078ff;
+            // }
+            
+        }
+        // .active-a-btn{
+        //     background-color: #0078ff;
+        //     color:white;
+        //     border-color: black;
+        //     ::shadow{
+        //         border-color: #0078ff;
+        //     }
+        // }
+        // .completed-a-btn{
+        //     background-color: #0078ff;
+        //     color:white;
+        //     border-color: black;
+        //     ::shadow{
+        //         border-color: #0078ff;
+        //     }
+        // }
+        
+    }
+}
+.hidden{
+    display: none;
 }
