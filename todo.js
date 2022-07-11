@@ -53,7 +53,7 @@ const displayTask=function(taskArray){
         const html=`
         <div class="taskList">
         <div class = 'taskName'>
-            <input type="checkbox" class="check" onclick=checks(item.id) >${item.name} 
+            <input type="checkbox" class="check" onclick=checks(${item.id}) >${item.name} 
             <span><input type="textbox" value="${item.name}"></span> 
         </div>
         <div class="edits">
@@ -113,6 +113,7 @@ const search =function(){
     const searched = taskArray.filter(el=>el.name==input)
         displayTask(searched)
         console.log(searched)
+
     
 }
 //add(taskArray)
