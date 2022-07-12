@@ -35,12 +35,13 @@ let newest = document.querySelector('.newest')
 let oldest = document.querySelector('.oldest')
 
 
-let btn_0=document.querySelector('.btn--0');
-let btn_1=document.querySelector('.btn--1');
-let btn_2=document.querySelector('.btn--2');
+let btn_0=document.querySelector('.all-a-btn');
+let btn_1=document.querySelector('.active-a-btn');
+let btn_2=document.querySelector('.completed-a-btn');
 let  active
-
+let task=[]
 let taskArray=[];
+let ids=0
 let array=[]
 taskList.innerHTML = '';
 document.querySelector('.taskmain').innerHTML = '';
@@ -53,13 +54,14 @@ const displayTask=function(taskArray){
         const html=`
         <div class="taskList">
         <div class = 'taskName'>
-            <input type="checkbox" class="check" onclick=checks(${item.id}) >${item.name} 
-            <span><input type="textbox" value="${item.name}"></span> 
+            <input type="checkbox" class="check" ${item.checked ? 'checked':""} onclick=checks(${item.id}) >${item.name} 
+            <span class='editss'><input type="textbox" class = 'texts' value="${item.name}"></span> 
         </div>
         <div class="edits">
-            <button class="edit"><img src="edit.svg" alt="edit" class="editIcon"></button>
-            <button class="delete"><i class="fa-solid fa-delete-left deletebtn"></i></button>
+            <button class="edit" onclick=edits(${item.id})><img src="edit.svg" alt="edit" class="editIcon"></button>
+            <button class="delete" onclick=deletes(${item.id})><i class="fa-solid fa-delete-left deletebtn"></i></button>
         </div>`
+
         document.querySelector('.taskmain').insertAdjacentHTML('beforeend',html);
     })
 }
@@ -78,22 +80,24 @@ search_btn.addEventListener('click',function(){
     //box.style.display='block'
 })
 
-function checks(i){
-    taskArray.forEach(el=>{
-        if(el.id==i){
-            if(!el.cCheck){
-                check.checked=true;
-                el.cCheck=true;
-                
-            }
-            else{
-                check.checked=false;
-                el.cCheck=false;
-            }
 
-        }
-        console.log(taskArray)
-    })
+
+function checks(i){
+    const index = taskArray.findIndex(x=> x.id ===i)
+    taskArray[index].checked=!taskArray[index].checked
+        console.log(taskArray)  
+}
+
+function deletes(i){
+    taskArray=taskArray.filter(el=>el.id!==i)
+    displayTask(taskArray)
+}
+function edits(i){
+    console.log("aass")
+    document.querySelector('.editss').style.display='block';
+    taskName.style.display='none';
+    //displayTask(taskArray)
+
 }
 
 const add = function(){
@@ -101,7 +105,7 @@ const add = function(){
     let checked = false
     input=input.trim()
     if(input){
-        taskArray.push({id:Math.trunc(Math.random()*1000),name:input,cCheck:checked})
+        taskArray.push({id:++ids,name:input,checked:false})
         console.log(taskArray)
         displayTask(taskArray)
     }
@@ -111,14 +115,122 @@ const search =function(){
     input=text.value
     input=input.toLowerCase()
     const searched = taskArray.filter(el=>el.name==input)
-        displayTask(searched)
-        console.log(searched)
-
-    
+    check.checked=true
+    displayTask(searched)
+   
+        console.log(searched)    
 }
-//add(taskArray)
+sort.addEventListener('click',function(){
+    let c
+    let sorting = sort.options[sort.selectedIndex].value;
+    console.log(sorting)
+    switch(sorting){
+        case "A-Z":
+           task= taskArray.slice().sort((a,b)=>{
+            if(a.name<b.name){
+                return -1
+            }
+            else if(a.name>b.name){
+                return 1
+            }
+            else{
+                return 0
 
-// boxBtn.addEventListener('click',function(){
+            }
+           })
+            displayTask(task)
+            console.log(task)
+            console.log(taskArray)
+            break;
+        case 'Z-A':
+            task=taskArray.slice().sort((a,b)=>{
+                if(b.name<a.name){
+                    return -1
+                }
+                else if(b.name>a.name){
+                    return 1
+                }
+                else{
+                    return 0
+    
+                }
+            });
+            displayTask(task);
+            break;
+        case 'newest':
+            task = taskArray.slice().sort((a,b)=>{
+            return b.id-a.id
+            })
+            displayTask(task)
+            break;
+        case "oldest":
+
+                task=taskArray.slice().sort((a,b)=>a.id-b.id)
+                displayTask(task)
+                break;
+            
+
+    }
+})
+
+action.addEventListener('click',function(){
+    let actions=action.options[action.selectedIndex].value;
+    console.log(actions)
+    switch(actions){
+        case "selectAll":
+            taskArray.forEach(el=>{
+                el.checked=true
+            })
+            displayTask(taskArray)
+            console.log(taskArray)
+            break;
+        case 'unselectAll':
+            taskArray.forEach(el=>{
+                el.checked=false
+            })
+            displayTask(taskArray)
+            console.log(taskArray)
+            break;
+        case "deselectAll":
+            taskArray=taskArray.filter(el=>el.checked==false)
+            displayTask(taskArray)
+            console.log(taskArray)
+            break;
+
+
+    }
+})
+
+btn_0.addEventListener('click',function(){
+    console.log('0')
+    btn_0.classList.add('btn--active')
+    btn_1.classList.remove('btn--active')
+    btn_2.classList.remove('btn--active')
+    console.log(taskArray)
+    displayTask(taskArray)
+})
+btn_1.addEventListener('click',function(){
+    console.log('1')
+    btn_0.classList.remove('btn--active')
+    btn_1.classList.add('btn--active')
+    btn_2.classList.remove('btn--active')
+    
+    array=taskArray.filter(el=>el.checked==false)
+    console.log(array)
+    displayTask(array)
+
+})
+btn_2.addEventListener('click',function(){
+    btn_0.classList.remove('btn--active')
+    btn_1.classList.remove('btn--active')
+    btn_2.classList.add('btn--active')
+
+    array=taskArray.filter(el=>el.checked==true);
+    displayTask(array)
+    console.log(array)
+})
+
+
     boxBtn.addEventListener('keyup',function(e){
         if(e.key=='Enter'){
             if(active==0){
@@ -129,7 +241,8 @@ const search =function(){
             else if(active==1){
                 search();
             }
+
         }
     })
-// })
+
 

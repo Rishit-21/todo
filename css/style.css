@@ -46,12 +46,12 @@ body {
   justify-content: space-between;
   line-height: 1.5em;
 }
-.taskList span {
+.taskList .editss {
   align-content: center;
   float: right;
   display: none;
 }
-.taskList span input {
+.taskList .editss input {
   width: 150%;
   margin: 0;
   padding: 0;
