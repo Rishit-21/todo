@@ -2,12 +2,11 @@
 body {
   font-family: "Poppins";
   background: white;
-  width: 80%;
-  margin: auto;
 }
 
 .heading {
   display: block;
+  width: auto;
   text-align: center;
   font-size: 25px;
 }
@@ -15,20 +14,21 @@ body {
 .box {
   align-content: center;
   margin-left: 0%;
-  width: 70%;
+  width: auto;
   display: none;
 }
 .box .box-btn {
   align-items: left;
   display: flex;
   margin-left: auto;
-  width: 200%;
+  width: 80%;
   line-height: 1em;
   background-color: white;
   border-left-width: 0px;
   border-bottom-width: 0px;
   border-top-width: 0px;
   border-right-width: 0px;
+  align-self: center;
 }
 .box .box-btn input {
   width: 70%;
@@ -37,11 +37,21 @@ body {
   text-align: center;
 }
 
+.taskmain {
+  width: 100%;
+}
+.taskmain .message {
+  float: right;
+  width: 80%;
+  margin: 0, 0, 0, 200px;
+  align-items: center;
+}
+
 .taskList {
   display: flex;
   align-content: center;
   margin: left 0;
-  width: 100%;
+  width: 70%;
   margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -117,6 +127,7 @@ body {
 .allOther .drop-downs {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   width: auto;
 }
 .allOther .action-btn {
@@ -149,71 +160,33 @@ body {
   display: none;
 }
 
-@media only screen and (min-width: 1000px) {
-  body {
-    width: auto;
-    margin: auto;
-  }
+@media only screen and (min-width: 770px) {
   .box {
-    margin: auto;
-    width: 80%;
+    width: 100%;
     align-items: center;
-    margin-right: 0px;
-    margin-left: 80.203px;
+    margin: auto;
   }
   .box .box-btn {
-    margin: auto;
-    margin-right: 0px;
-    margin-left: 368.203px;
-    align-items: center;
     width: 80%;
+    align-items: center;
+  }
+  .taskList {
+    width: 70%;
   }
   .allOther {
-    display: grid;
-    width: 60%;
-    margin: auto;
-    margin-left: 400px;
-    margin-right: 0;
-    grid-template-rows: 51px 54px;
-    grid-template-columns: 109px 376px;
-    align-content: center;
-    justify-content: center;
+    display: flex;
+    width: 50%;
+    align-content: stretch;
+    flex-direction: row;
+    justify-content: space-evenly;
     align-items: center;
   }
-  .allOther .all-btn {
-    width: 80%;
-    align-items: center;
+  .allOther .add-search-btn {
+    display: flex;
+    width: 25%;
   }
-}
-@media only screen and (min-width: 1200px) {
-  body {
-    width: auto;
-    margin: auto;
-  }
-  .box {
-    margin: auto;
-    width: 80%;
-    align-items: center;
-    margin-right: 0px;
-    margin-left: 132.203px;
-  }
-  .box .box-btn {
-    margin: auto;
-    margin-right: 0px;
-    margin-left: 368.203px;
-    align-items: center;
-    width: 80%;
-  }
-  .allOther {
-    display: grid;
-    width: 60%;
-    margin: auto;
-    margin-left: 400px;
-    margin-right: 0;
-    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
-  }
-  .allOther .all-btn {
-    width: 80%;
-    align-items: center;
+  .allOther .drop-downs {
+    display: flex;
+    flex-direction: row;
   }
 }/*# sourceMappingURL=style.css.map */

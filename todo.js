@@ -5,6 +5,7 @@ let  boxBtn = document.querySelector('.box-btn');
 let taskList= document.querySelector('.taskList');
 let taskName = document.querySelector('.taskName');
 let check =document.querySelector('.check')
+let msg = document.querySelector('.message');
 
 let checkC = document.querySelector('.check-c');
 let editBox = document.querySelector('span');
@@ -50,24 +51,35 @@ let input
 let editFlag = false
 let currentId
 let searched
+
+
+
 const displayTask=function(taskArray){
     document.querySelector('.taskmain').innerHTML = '';
-    taskArray.forEach(item=>{
-        console.log(item)
-        const html=`
-        <div class="taskList">
-        <div class = 'taskName'>
-            <input type="checkbox" class="check" ${item.checked ? 'checked':""} onclick=checks(${item.id})>
-            <div class='editss'>${editFlag && currentId==item.id ?`<input type="textbox" class = 'texts' value="${item.name}" onkeypress = editEnter(event)>`:item.name}</div> 
-             
-        </div>
-        <div class="edits">
-            <button class="edit" onclick=edits(${item.id})><img src="edit.svg" alt="edit" class="editIcon"></button>
-            <button class="delete" onclick=deletes(${item.id})><i class="fa-solid fa-delete-left deletebtn"></i></button>
-        </div>`
-
-        document.querySelector('.taskmain').insertAdjacentHTML('beforeend',html);
-    })
+    if(taskArray.length===0){
+        const nodatamsg = `<div class="message">No data found</div>`;
+        document.querySelector('.taskmain').insertAdjacentHTML('beforeend',nodatamsg);
+        // msg.style.display = "block";
+    }
+    else{
+        // msg.style.display = "none";
+        taskArray.forEach(item=>{
+            console.log(item)
+            const html=`
+            <div class="taskList">
+            <div class = 'taskName'>
+                <input type="checkbox" class="check" ${item.checked ? 'checked':""} onclick=checks(${item.id})>
+                <div class='editss'>${editFlag && currentId==item.id ?`<input type="textbox" class = 'texts' value="${item.name}" onkeypress = editEnter(event)>`:item.name}</div> 
+                 
+            </div>
+            <div class="edits">
+                <button class="edit" onclick=edits(${item.id})><img src="edit.svg" alt="edit" class="editIcon"></button>
+                <button class="delete" onclick=deletes(${item.id})><i class="fa-solid fa-delete-left deletebtn"></i></button>
+            </div>`
+    
+            document.querySelector('.taskmain').insertAdjacentHTML('beforeend',html);
+        })
+    }
 }
 
 
@@ -131,8 +143,15 @@ const search =function(){
     input=text.value
     input=input.toLowerCase()
     searched = taskArray.filter(el=>el.name.toLowerCase().includes(input));
-    check.checked=true
-    displayTask(searched)
+    //check.checked=true
+    // if(searched.length!==0){
+        // displayTask(searched)
+    // }
+    if(input==''){
+        displayTask(taskArray)
+    }else {
+        displayTask(searched)
+    }
    
         console.log(searched)    
 }

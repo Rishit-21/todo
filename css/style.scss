@@ -3,18 +3,19 @@ body{
   font-family: 'Poppins';
   background: white;
   //background-size: contain;  
-  width: 80%;
-  margin: auto;
+//   width: 80%;
+//   margin: auto;
 }
 .heading{
     display: block;
+    width: auto;
     text-align: center;
     font-size: 25px;
 }
 .box{
     align-content: center;
     margin-left: 0%;
-    width: 70%;
+    width: auto;
     display: none;
     //display: block;
     
@@ -23,13 +24,14 @@ body{
     display: flex;
     //float: right;
     margin-left: auto;
-    width: 200%;
+    width: 80%;
     line-height: 1em;
     background-color: white;
     border-left-width: 0px;
     border-bottom-width: 0px;
     border-top-width: 0px;
     border-right-width: 0px;
+    align-self: center;
     input{
         width: 70%;
     }
@@ -41,13 +43,21 @@ body{
     
 
 }
-
+.taskmain{
+    width: 100%;
+    .message{
+        float: right;
+        width: 80%;
+        margin: 0,0,0,200px;
+        align-items: center;
+    }
+}
 .taskList{
     //display: none;
     display: flex;
     align-content: center;
     margin: left 0;
-    width: 100%;
+    width: 70%;
     margin-top: 1em;
     margin-left: auto;
     margin-right:auto ;
@@ -127,25 +137,9 @@ body{
         align-content: center;
 
     }
-    // .add{
-    //     //border: solid black;
-    //     //padding-left: 1%;
-    //     //padding-right: .5;
-    //     //width: auto;
-    //     // :hover{
-    //     //     cursor: pointer;
-    //     //     background-color: #0078ff;
-    //     //     color: white;
-    //     // }
-
-    // }
 
     .add-btn{
         background-color: white;
-        // border-left-width: 0px;
-        // border-bottom-width: 0px;
-        // border-top-width: 0px;
-        // border-right-width: 0px;
         color:black;
 
 
@@ -153,10 +147,6 @@ body{
     }
     .search-btn{
         background-color: white;
-        // border-left-width: 0px;
-        // border-bottom-width: 0px;
-        // border-top-width: 0px;
-        // border-right-width: 0px;
 
         
     }
@@ -167,32 +157,12 @@ body{
 
     }
 
-    
-    // .search{
-    //     // border: solid black;
-    //     // // padding-right: 10px;
-    //     // // padding-left: 10px;
-    //     // padding-left: 1%;
-    //     // padding-right: .5;
-    //     // width: auto;
-    //     // :hover{
-    //     //     cursor: pointer;
-    //     //     background-color: #0078ff;
-    //     //     color: white;
-    //     // }
-
-    // }
-    // .btn--all{
-
-    // }
 
     .drop-downs{
         display:flex;
         justify-content: space-between;
+        flex-direction: column;
         width: auto;
-        
-
-
     }
     .action-btn{
         background-color: white;
@@ -200,8 +170,6 @@ body{
         border-bottom-width: 0px;
         border-top-width: 0px;
         border-right-width: 0px;
-        
-
     }
     .sort-btn{
         background-color: white;
@@ -222,121 +190,41 @@ body{
             background-color: #0078ff;
             color:white;
             border-color: black;
-            // ::shadow{
-            //     border-color: #0078ff;
-            // }
             
         }
-        // .active-a-btn{
-        //     background-color: #0078ff;
-        //     color:white;
-        //     border-color: black;
-        //     ::shadow{
-        //         border-color: #0078ff;
-        //     }
-        // }
-        // .completed-a-btn{
-        //     background-color: #0078ff;
-        //     color:white;
-        //     border-color: black;
-        //     ::shadow{
-        //         border-color: #0078ff;
-        //     }
-        // }
-        
     }
 }
 .hidden{
     display: none;
 }
-@media only screen and (min-width:1000px){
-    body{
-        width: auto;
-        margin: auto;
-    }
+@media only screen and (min-width:770px){
     .box{
-        margin: auto;
-        width: 80%;
+        width: 100%;
         align-items: center;
-        margin-right: 0px;
-        margin-left: 80.203px;
-        //margin-left: 150.3;
-
+        margin: auto;
         .box-btn{
-            margin: auto;
-            margin-right: 0px;
-            margin-left: 368.203px;
-            align-items: center;
             width: 80%;
+            align-items: center;
         }
     }
+    .taskList{
+        width: 70%;
+    }
+
     .allOther{
-        // display: grid;
-        // width: 60%;
-        // margin: auto;
-        // margin-left: 400px;
-        // margin-right: 0;
-        //margin-top: 1em;
-        //align-content: center;
-        display: grid;
-        width: 60%;
-        margin: auto;
-        margin-left: 400px;
-        margin-right: 0;
-        grid-template-rows: 51px 54px;
-        grid-template-columns: 109px 376px;
-        align-content: center;
-        justify-content: center;
+        display: flex;
+        width: 50%;
+        align-content: stretch;
+        flex-direction: row;
+        justify-content: space-evenly;
         align-items: center;
-        
-    //   grid-template-columns: repeat(auto-fit,minmax(1rem,1fr));
-      .all-btn{
-        //margin-top: 0;
-        //margin-left: 10%;
-        width: 80%;
-        align-items: center;
-      }
-    }
-
-}
-
-@media only screen and (min-width:1200px){
-    body{
-        width: auto;
-        margin: auto;
-    }
-    .box{
-        margin: auto;
-        width: 80%;
-        align-items: center;
-        margin-right: 0px;
-        margin-left: 132.203px;
-        //margin-left: 150.3;
-
-        .box-btn{
-            margin: auto;
-            margin-right: 0px;
-            margin-left: 368.203px;
-            align-items: center;
-            width: 80%;
+        .add-search-btn{
+            display: flex;
+            width: 25%;
+        }
+        .drop-downs{
+            display: flex;
+            flex-direction: row;
         }
     }
-    .allOther{
-        display: grid;
-        width: 60%;
-        margin: auto;
-        margin-left: 400px;
-        margin-right: 0;
-        //margin-top: 1em;
-        //align-content: center;
-        
-      grid-template-columns: repeat(auto-fit,minmax(1rem,1fr));
-      .all-btn{
-        //margin-top: 0;
-        //margin-left: 10%;
-        width: 80%;
-        align-items: center;
-      }
-    }
-
 }
