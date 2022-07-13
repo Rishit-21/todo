@@ -49,6 +49,8 @@ body{
     margin: left 0;
     width: 100%;
     margin-top: 1em;
+    margin-left: auto;
+    margin-right:auto ;
     justify-content: space-between;
     line-height: 1.5em;
     //display: hidden;
@@ -57,7 +59,7 @@ body{
         //width: 500%;
         align-content: center;
         float: right;
-        display: none;
+        //display: none;
         input{
             width:150%;
             margin: 0;
@@ -105,12 +107,17 @@ body{
 
 .allOther{
     display:grid;
+    
+    //grid-template-columns: repeat(auto-fit,minmax(10rem,1fr));
     grid-template-rows: 53px 55px;
-    grid-template-columns: 142px 253px;
+    grid-template-columns: 59px 177px;
     justify-content: space-between;
     margin-top: 1em;
+    margin-left: auto;
+    margin-right: auto;
     width: 60%;
-    //margin: auto;
+    //margin-left: auto;
+    //margin-right: auto;
     align-content: center;
 
     .add-search-btn{
@@ -206,8 +213,11 @@ body{
 
     .all-btn{
         display: flex;
-        margin-left: 80%;
-        margin-top: 2%;
+        margin: auto;
+        width: 80%;
+        align-content: center;
+        // margin-left: 80%;
+        // margin-top: 2%;
         .btn--all{
             background-color: #0078ff;
             color:white;
@@ -238,4 +248,29 @@ body{
 }
 .hidden{
     display: none;
+}
+
+@media only screen and (min-width:1000px){
+    body{
+        width: auto;
+        margin: auto;
+    }
+    .allOther{
+        display: grid;
+        width: 60%;
+        margin: auto;
+        margin-left: 400px;
+        margin-right: 0;
+        //margin-top: 1em;
+        //align-content: center;
+        
+      grid-template-columns: repeat(auto-fit,minmax(1rem,1fr));
+      .all-btn{
+        //margin-top: 0;
+        //margin-left: 10%;
+        width: 80%;
+        align-items: center;
+      }
+    }
+
 }

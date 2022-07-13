@@ -43,13 +43,14 @@ body {
   margin: left 0;
   width: 100%;
   margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
   justify-content: space-between;
   line-height: 1.5em;
 }
 .taskList .editss {
   align-content: center;
   float: right;
-  display: none;
 }
 .taskList .editss input {
   width: 150%;
@@ -88,9 +89,11 @@ body {
 .allOther {
   display: grid;
   grid-template-rows: 53px 55px;
-  grid-template-columns: 142px 253px;
+  grid-template-columns: 59px 177px;
   justify-content: space-between;
   margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
   width: 60%;
   align-content: center;
 }
@@ -132,8 +135,9 @@ body {
 }
 .allOther .all-btn {
   display: flex;
-  margin-left: 80%;
-  margin-top: 2%;
+  margin: auto;
+  width: 80%;
+  align-content: center;
 }
 .allOther .all-btn .btn--all {
   background-color: #0078ff;
@@ -143,4 +147,23 @@ body {
 
 .hidden {
   display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  body {
+    width: auto;
+    margin: auto;
+  }
+  .allOther {
+    display: grid;
+    width: 60%;
+    margin: auto;
+    margin-left: 400px;
+    margin-right: 0;
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
+  }
+  .allOther .all-btn {
+    width: 80%;
+    align-items: center;
+  }
 }/*# sourceMappingURL=style.css.map */

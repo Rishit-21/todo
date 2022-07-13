@@ -47,6 +47,9 @@ taskList.innerHTML = '';
 document.querySelector('.taskmain').innerHTML = '';
 let cChecked=check
 let input
+let editFlag = false
+let currentId
+let searched
 const displayTask=function(taskArray){
     document.querySelector('.taskmain').innerHTML = '';
     taskArray.forEach(item=>{
@@ -54,8 +57,9 @@ const displayTask=function(taskArray){
         const html=`
         <div class="taskList">
         <div class = 'taskName'>
-            <input type="checkbox" class="check" ${item.checked ? 'checked':""} onclick=checks(${item.id}) >${item.name} 
-            <span class='editss'><input type="textbox" class = 'texts' value="${item.name}"></span> 
+            <input type="checkbox" class="check" ${item.checked ? 'checked':""} onclick=checks(${item.id})>
+            <div class='editss'>${editFlag && currentId==item.id ?`<input type="textbox" class = 'texts' value="${item.name}" onkeypress = editEnter(event)>`:item.name}</div> 
+             
         </div>
         <div class="edits">
             <button class="edit" onclick=edits(${item.id})><img src="edit.svg" alt="edit" class="editIcon"></button>
@@ -93,16 +97,28 @@ function deletes(i){
     displayTask(taskArray)
 }
 function edits(i){
-    console.log("aass")
-    document.querySelector('.editss').style.display='block';
-    taskName.style.display='none';
-    //displayTask(taskArray)
+    editFlag=true
+    currentId=i
+    displayTask(taskArray)
 
+    console.log("aass")
+    //document.querySelector('.editss').style.display='block';
+    //taskName.style.display='none';
+    //displayTask(taskArray)
+}
+function editEnter(e){
+    if(e.key==='Enter'){
+        const index = taskArray.findIndex(el=> el.id===currentId)
+        taskArray[index].name=document.querySelector('.texts').value
+        editFlag=false;
+        currentId=0
+        displayTask(taskArray)
+    }
 }
 
 const add = function(){
     input=text.value;
-    let checked = false
+    //let checked = false
     input=input.trim()
     if(input){
         taskArray.push({id:++ids,name:input,checked:false})
@@ -114,7 +130,7 @@ const add = function(){
 const search =function(){
     input=text.value
     input=input.toLowerCase()
-    const searched = taskArray.filter(el=>el.name==input)
+    searched = taskArray.filter(el=>el.name.toLowerCase().includes(input));
     check.checked=true
     displayTask(searched)
    
@@ -176,24 +192,73 @@ sort.addEventListener('click',function(){
 action.addEventListener('click',function(){
     let actions=action.options[action.selectedIndex].value;
     console.log(actions)
+
     switch(actions){
         case "selectAll":
             taskArray.forEach(el=>{
-                el.checked=true
+                if(active==1){
+                    searched.forEach(eli=>{
+                        eli.checked=true
+                        const index=taskArray.findIndex(x=>x.id==eli.id)
+                        taskArray[index].checked=true
+                        displayTask(searched)
+                        
+                        
+                    })
+                }
+                else{
+
+                    el.checked=true
+                    displayTask(taskArray)
+                }
             })
-            displayTask(taskArray)
             console.log(taskArray)
             break;
         case 'unselectAll':
             taskArray.forEach(el=>{
-                el.checked=false
+                if(active==1){
+                    searched.forEach(eli=>{
+                        eli.checked=false
+                        const index=taskArray.findIndex(x=>x.id==eli.id)
+                        taskArray[index].checked=false
+                        displayTask(searched)
+                        
+                        
+                    })
+
+                }
+                else{
+
+                    el.checked=false
+                    displayTask(taskArray)
+                }
+
             })
-            displayTask(taskArray)
             console.log(taskArray)
             break;
         case "deselectAll":
-            taskArray=taskArray.filter(el=>el.checked==false)
-            displayTask(taskArray)
+            if(active==1){
+                console.log(searched)
+                searched=searched.filter(el=>el.checked==true)
+                console.log(searched)
+                searched.forEach(eli=>{
+                    const index=taskArray.findIndex(x=>x.id==eli.id)
+                    let i=taskArray[index].id
+                    console.log(i)
+                    //console.log(taskArray)
+                    taskArray=taskArray.filter(el=> el.id!==i)
+                    displayTask(taskArray)
+
+                    
+                    
+                })
+
+            }
+            else{
+                taskArray=taskArray.filter(el=>el.checked==false)
+                displayTask(taskArray)
+            }
+ 
             console.log(taskArray)
             break;
 
@@ -238,10 +303,10 @@ btn_2.addEventListener('click',function(){
                 add(taskArray);
                 text.value='';
             }
-            else if(active==1){
-                search();
-            }
-
+            
+        }
+        else if(active==1){
+            search();
         }
     })
 
