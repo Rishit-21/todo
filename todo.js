@@ -161,6 +161,7 @@ sort.addEventListener('click',function(){
     console.log(sorting)
     switch(sorting){
         case "A-Z":
+            sort.selectedIndex=0
            task= taskArray.slice().sort((a,b)=>{
             if(a.name<b.name){
                 return -1
@@ -178,6 +179,7 @@ sort.addEventListener('click',function(){
             console.log(taskArray)
             break;
         case 'Z-A':
+            sort.selectedIndex=0
             task=taskArray.slice().sort((a,b)=>{
                 if(b.name<a.name){
                     return -1
@@ -193,16 +195,19 @@ sort.addEventListener('click',function(){
             displayTask(task);
             break;
         case 'newest':
+            sort.selectedIndex=0
             task = taskArray.slice().sort((a,b)=>{
             return b.id-a.id
             })
             displayTask(task)
             break;
         case "oldest":
+            sort.selectedIndex=0
 
                 task=taskArray.slice().sort((a,b)=>a.id-b.id)
                 displayTask(task)
                 break;
+        
             
 
     }
@@ -214,6 +219,8 @@ action.addEventListener('click',function(){
 
     switch(actions){
         case "selectAll":
+            action.selectedIndex=0
+
             taskArray.forEach(el=>{
                 if(active==1){
                     searched.forEach(eli=>{
@@ -234,6 +241,7 @@ action.addEventListener('click',function(){
             console.log(taskArray)
             break;
         case 'unselectAll':
+            action.selectedIndex=0
             taskArray.forEach(el=>{
                 if(active==1){
                     searched.forEach(eli=>{
@@ -256,6 +264,7 @@ action.addEventListener('click',function(){
             console.log(taskArray)
             break;
         case "deselectAll":
+            action.selectedIndex=0
             if(active==1){
                 console.log(searched)
                 searched=searched.filter(el=>el.checked==true)
@@ -280,6 +289,8 @@ action.addEventListener('click',function(){
  
             console.log(taskArray)
             break;
+        default:
+
 
 
     }
