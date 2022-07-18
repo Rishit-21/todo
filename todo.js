@@ -138,6 +138,7 @@ const add = function(){
         displayTask(taskArray)
     }
     console.log(taskArray)
+    btn_0.classList.add('btn--active')
 }
 const search =function(){
     input=text.value
@@ -148,7 +149,7 @@ const search =function(){
         // displayTask(searched)
     // }
     if(input==''){
-        displayTask(taskArray)
+        displayTask('')
     }else {
         displayTask(searched)
     }
@@ -161,7 +162,7 @@ sort.addEventListener('click',function(){
     console.log(sorting)
     switch(sorting){
         case "A-Z":
-            sort.selectedIndex=0
+            //sort.selectedIndex=0
            task= taskArray.slice().sort((a,b)=>{
             if(a.name<b.name){
                 return -1
@@ -179,7 +180,7 @@ sort.addEventListener('click',function(){
             console.log(taskArray)
             break;
         case 'Z-A':
-            sort.selectedIndex=0
+            //sort.selectedIndex=0
             task=taskArray.slice().sort((a,b)=>{
                 if(b.name<a.name){
                     return -1
@@ -195,14 +196,14 @@ sort.addEventListener('click',function(){
             displayTask(task);
             break;
         case 'newest':
-            sort.selectedIndex=0
+            //sort.selectedIndex=0
             task = taskArray.slice().sort((a,b)=>{
             return b.id-a.id
             })
             displayTask(task)
             break;
         case "oldest":
-            sort.selectedIndex=0
+            // sort.selectedIndex=0
 
                 task=taskArray.slice().sort((a,b)=>a.id-b.id)
                 displayTask(task)
@@ -223,14 +224,21 @@ action.addEventListener('click',function(){
 
             taskArray.forEach(el=>{
                 if(active==1){
-                    searched.forEach(eli=>{
-                        eli.checked=true
-                        const index=taskArray.findIndex(x=>x.id==eli.id)
-                        taskArray[index].checked=true
-                        displayTask(searched)
-                        
-                        
-                    })
+                    if(searched){
+                        searched.forEach(eli=>{
+                            eli.checked=true
+                            const index=taskArray.findIndex(x=>x.id==eli.id)
+                            taskArray[index].checked=true
+                            displayTask(searched)
+                            
+                            
+                        })
+                    }
+                    else{
+                        el.checked=true
+                        displayTask(taskArray)
+
+                    }
                 }
                 else{
 
@@ -244,14 +252,21 @@ action.addEventListener('click',function(){
             action.selectedIndex=0
             taskArray.forEach(el=>{
                 if(active==1){
-                    searched.forEach(eli=>{
-                        eli.checked=false
-                        const index=taskArray.findIndex(x=>x.id==eli.id)
-                        taskArray[index].checked=false
-                        displayTask(searched)
-                        
-                        
-                    })
+                    if(searched){
+                        searched.forEach(eli=>{
+                            eli.checked=false
+                            const index=taskArray.findIndex(x=>x.id==eli.id)
+                            taskArray[index].checked=false
+                            displayTask(searched)
+                            
+                            
+                        })
+                    }
+                    else{
+                        el.checked=false
+                    displayTask(taskArray)
+
+                    }
 
                 }
                 else{
@@ -309,20 +324,38 @@ btn_1.addEventListener('click',function(){
     btn_0.classList.remove('btn--active')
     btn_1.classList.add('btn--active')
     btn_2.classList.remove('btn--active')
+    if(task.length>0){
+        array=task.filter(el=>el.checked==false)
+        console.log(array)
+        displayTask(array)
+
+    }
+    else{
+        array=taskArray.filter(el=>el.checked==false)
+        console.log(array)
+        displayTask(array)
+    }
     
-    array=taskArray.filter(el=>el.checked==false)
-    console.log(array)
-    displayTask(array)
 
 })
 btn_2.addEventListener('click',function(){
     btn_0.classList.remove('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.add('btn--active')
+    
+    if(task.length>0){
+        array=task.filter(el=>el.checked==true);
+        displayTask(array)
+        console.log(array)
 
-    array=taskArray.filter(el=>el.checked==true);
-    displayTask(array)
-    console.log(array)
+    }
+    else{
+        array=taskArray.filter(el=>el.checked==true);
+        displayTask(array)
+        console.log(array)
+
+    }
+
 })
 
 

@@ -8,14 +8,14 @@ body{
 }
 .heading{
     display: block;
-    width: auto;
+    width: 100%;
     text-align: center;
     font-size: 25px;
 }
 .box{
     align-content: center;
     margin-left: 0%;
-    width: auto;
+    width: 90%;
     display: none;
     //display: block;
     
@@ -198,6 +198,10 @@ body{
     display: none;
 }
 @media only screen and (min-width:770px){
+    .heading{
+        width: auto;
+        align-items: center;
+    }
     .box{
         width: 100%;
         align-items: center;
@@ -218,6 +222,43 @@ body{
         flex-direction: row;
         justify-content: space-evenly;
         align-items: center;
+       
+        .add-search-btn{
+            display: flex;
+            width: 25%;
+        }
+        .drop-downs{
+            display: flex;
+            flex-direction: row;
+        }
+    }
+}
+@media screen {
+    .heading{
+        width: auto;
+        align-items: center;
+    }
+    .box{
+        width: 100%;
+        align-items: center;
+        margin: auto;
+        .box-btn{
+            width: 80%;
+            align-items: center;
+        }
+    }
+    .taskList{
+        width: 70%;
+    }
+
+    .allOther{
+        display: flex;
+        width: 50%;
+        align-content: stretch;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+       
         .add-search-btn{
             display: flex;
             width: 25%;
