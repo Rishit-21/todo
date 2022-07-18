@@ -190,6 +190,9 @@ const add = function(){
     }
     console.log(taskArray)
     btn_0.classList.add('btn--active')
+    btn_1.classList.remove('btn--active')
+    btn_2.classList.remove('btn--active')
+    allbtn=0
 }
 const search =function(){
     main()
