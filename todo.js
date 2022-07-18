@@ -384,6 +384,7 @@ action.addEventListener('click',function(){
                         console.log(i)
                         //console.log(taskArray)
                         tasks=tasks.filter(el=> el.id!==i)
+                        taskArray=taskArray.filter(el=>el.id!==i)
                         displayTask(tasks)
     
                         
@@ -392,6 +393,7 @@ action.addEventListener('click',function(){
                 }
                 else{
                     tasks=tasks.filter(el=>el.checked==false)
+                    taskArray=taskArray.filter(el=>el.checked==false)
                     displayTask(tasks)
 
                 }
@@ -400,6 +402,7 @@ action.addEventListener('click',function(){
             else{
                 tasks=tasks.filter(el=>el.checked==false)
                 task=task.filter(el=>el.checked==false)
+                taskArray=taskArray.filter(el=>el.checked==false)
                 displayTask(tasks)
             }
  
