@@ -280,13 +280,15 @@ action.addEventListener('click',function(){
         case "selectAll":
             action.selectedIndex=0
 
-            tasks.forEach(el=>{
+            taskArray.forEach(el=>{
                 if(active==1){
                     if(searched){
                         searched.forEach(eli=>{
                             eli.checked=true
                             const index=tasks.findIndex(x=>x.id==eli.id)
                             tasks[index].checked=true
+                             index = taskArray.findIndex(x.id==eli.id)
+                             taskArray[index].checked=true
 
                             if(allbtn==1){
                                 array=tasks.filter(el=>el.checked==false)
@@ -325,7 +327,7 @@ action.addEventListener('click',function(){
             break;
         case 'unselectAll':
             action.selectedIndex=0
-            tasks.forEach(el=>{
+            taskArray.forEach(el=>{
                 if(active==1){
                     if(searched){
                         searched.forEach(eli=>{
