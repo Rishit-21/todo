@@ -68,7 +68,7 @@ const displayTask=function(taskArray){
     else{
         // msg.style.display = "none";
         taskArray.forEach(item=>{
-            console.log(item)
+            //console.log(item)
             const html=`
             <div class="taskList">
             <div class = 'taskName'>
@@ -120,14 +120,32 @@ function main(){
 function checks(i){
     const index = taskArray.findIndex(x=> x.id ===i)
     taskArray[index].checked=!taskArray[index].checked
-        console.log(taskArray)  
+        //console.log(taskArray) 
+        //main() 
 
         if(taskArray[index].checked){
-                array=taskArray.filter(el=>el.checked==false)
-                console.log(array)
+            console.log("hello")
+            array=taskArray.filter(el=>el.checked==false)
+            console.log(array)
+            // displayTask(array)
+            if(allbtn ==1){
                 displayTask(array)
+    
+            }
+            else{
+                console.log('helllo')
+                displayTask(taskArray)
+            }
         }
+        else if(taskArray[index].checked==false){
+            if(allbtn==2){
+                array=taskArray.filter(el=>el.checked==true);
+                displayTask(array)
 
+            }
+
+
+        }
         if(task.length>0){
             if(task[index].checked){
                 array=task.filter(el=>el.checked==false)
@@ -266,25 +284,38 @@ action.addEventListener('click',function(){
                             eli.checked=true
                             const index=tasks.findIndex(x=>x.id==eli.id)
                             tasks[index].checked=true
-                            displayTask(searched)
-                            
-                            
+
+                            if(allbtn==1){
+                                array=tasks.filter(el=>el.checked==false)
+                                displayTask(array)
+                            }
+                            else{
+                                
+                                displayTask(searched)
+                            }
                         })
+                        
                     }
                     else{
                         el.checked=true
-                        displayTask(tasks)
+                    displayTask(tasks)
 
                     }
                 }
-
-
-                
-
-
                 else{
+                    if(allbtn==1){
+                        console.log('how are u')
+                        el.checked=true
+                      array=tasks.filter(el=>el.checked==false)
+                      displayTask(array)
+
+                  }
+                  else{
+                    console.log('how are u 5555')
                     el.checked=true
                     displayTask(tasks)
+                  }
+
                 }
             })
             console.log(tasks)
@@ -298,7 +329,14 @@ action.addEventListener('click',function(){
                             eli.checked=false
                             const index=tasks.findIndex(x=>x.id==eli.id)
                             tasks[index].checked=false
-                            displayTask(searched)
+                            if(allbtn==2){
+                                array=tasks.filter(el=>el.checked==true)
+                                displayTask(array)
+                            }
+                            else{
+                                
+                                displayTask(searched)
+                            }
                             
                             
                         })
@@ -311,9 +349,20 @@ action.addEventListener('click',function(){
 
                 }
                 else{
+                    if(allbtn==2){
+                        console.log('how are u')
+                        el.checked=false
+                      array=tasks.filter(el=>el.checked==true)
+                      displayTask(array)
 
+                  }
+                  else{
+                    console.log('how are u 5555')
                     el.checked=false
                     displayTask(tasks)
+                  }
+
+                   
                 }
 
             })
@@ -362,8 +411,9 @@ action.addEventListener('click',function(){
 
 btn_0.addEventListener('click',function(){
     allbtn=0
-    console.log('0')
+    console.log(allbtn)
     main()
+   
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.remove('btn--active')
@@ -372,22 +422,22 @@ btn_0.addEventListener('click',function(){
         displayTask(task)
     }
     else{
-        console.log(taskArray)
+        //console.log(taskArray)
         displayTask(tasks)
     }
 })
 btn_1.addEventListener('click',function(){
     allbtn=1
-    console.log('1')
-    main()
+    console.log(allbtn)
     btn_0.classList.remove('btn--active')
     btn_1.classList.add('btn--active')
     btn_2.classList.remove('btn--active')
+    main()
     if(task.length>0){
         array=task.filter(el=>el.checked==false)
         console.log(array)
         displayTask(array)
-
+        
     }
     else{
         array=tasks.filter(el=>el.checked==false)
@@ -399,21 +449,23 @@ btn_1.addEventListener('click',function(){
 })
 btn_2.addEventListener('click',function(){
     allbtn=2
+    console.log(allbtn)
     btn_0.classList.remove('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.add('btn--active')
+    main()
     
     if(task.length>0){
         array=task.filter(el=>el.checked==true);
         displayTask(array)
         console.log(array)
-
+        
     }
     else{
         array=tasks.filter(el=>el.checked==true);
         displayTask(array)
         console.log(array)
-
+        
     }
 
 })
