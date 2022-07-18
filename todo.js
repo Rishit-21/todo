@@ -52,6 +52,8 @@ let editFlag = false
 let currentId
 let searched
 
+let allbtn
+
 
 
 const displayTask=function(taskArray){
@@ -102,6 +104,20 @@ function checks(i){
     const index = taskArray.findIndex(x=> x.id ===i)
     taskArray[index].checked=!taskArray[index].checked
         console.log(taskArray)  
+
+        if(taskArray[index].checked){
+                array=taskArray.filter(el=>el.checked==false)
+                console.log(array)
+                displayTask(array)
+        }
+
+        if(task.length>0){
+            if(task[index].checked){
+                array=task.filter(el=>el.checked==false)
+                console.log(array)
+                displayTask(array)
+            }   
+        }
 }
 
 function deletes(i){
@@ -149,14 +165,14 @@ const search =function(){
         // displayTask(searched)
     // }
     if(input==''){
-        displayTask('')
+        displayTask(taskArray)
     }else {
         displayTask(searched)
     }
    
         console.log(searched)    
 }
-sort.addEventListener('click',function(){
+ sort.addEventListener('click',function(){
     let c
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
@@ -213,6 +229,7 @@ sort.addEventListener('click',function(){
 
     }
 })
+
 
 action.addEventListener('click',function(){
     let actions=action.options[action.selectedIndex].value;
@@ -306,6 +323,7 @@ action.addEventListener('click',function(){
             }
             else{
                 taskArray=taskArray.filter(el=>el.checked==false)
+                task=task.filter(el=>el.checked==false)
                 displayTask(taskArray)
             }
  
@@ -319,6 +337,7 @@ action.addEventListener('click',function(){
 })
 
 btn_0.addEventListener('click',function(){
+    allbtn=0
     console.log('0')
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
@@ -333,6 +352,7 @@ btn_0.addEventListener('click',function(){
     }
 })
 btn_1.addEventListener('click',function(){
+    allbtn=1
     console.log('1')
     btn_0.classList.remove('btn--active')
     btn_1.classList.add('btn--active')
@@ -352,6 +372,7 @@ btn_1.addEventListener('click',function(){
 
 })
 btn_2.addEventListener('click',function(){
+    allbtn=2
     btn_0.classList.remove('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.add('btn--active')
