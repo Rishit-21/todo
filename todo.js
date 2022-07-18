@@ -281,20 +281,27 @@ action.addEventListener('click',function(){
         case "deselectAll":
             action.selectedIndex=0
             if(active==1){
-                console.log(searched)
-                searched=searched.filter(el=>el.checked==true)
-                console.log(searched)
-                searched.forEach(eli=>{
-                    const index=taskArray.findIndex(x=>x.id==eli.id)
-                    let i=taskArray[index].id
-                    console.log(i)
-                    //console.log(taskArray)
-                    taskArray=taskArray.filter(el=> el.id!==i)
+                if(searched){
+                    console.log(searched)
+                    searched=searched.filter(el=>el.checked==true)
+                    console.log(searched)
+                    searched.forEach(eli=>{
+                        const index=taskArray.findIndex(x=>x.id==eli.id)
+                        let i=taskArray[index].id
+                        console.log(i)
+                        //console.log(taskArray)
+                        taskArray=taskArray.filter(el=> el.id!==i)
+                        displayTask(taskArray)
+    
+                        
+                        
+                    })
+                }
+                else{
+                    taskArray=taskArray.filter(el=>el.checked==false)
                     displayTask(taskArray)
 
-                    
-                    
-                })
+                }
 
             }
             else{
@@ -316,8 +323,14 @@ btn_0.addEventListener('click',function(){
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.remove('btn--active')
-    console.log(taskArray)
-    displayTask(taskArray)
+    if(task.length>0){
+        console.log(taskArray)
+        displayTask(task)
+    }
+    else{
+        console.log(taskArray)
+        displayTask(taskArray)
+    }
 })
 btn_1.addEventListener('click',function(){
     console.log('1')
