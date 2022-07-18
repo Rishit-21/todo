@@ -298,9 +298,9 @@ action.addEventListener('click',function(){
                     if(searched){
                         searched.forEach(eli=>{
                             eli.checked=true
-                            const index=tasks.findIndex(x=>x.id==eli.id)
+                            let index=tasks.findIndex(x=>x.id==eli.id)
                             tasks[index].checked=true
-                             index = taskArray.findIndex(x.id==eli.id)
+                             index = taskArray.findIndex(x=>x.id==eli.id)
                              taskArray[index].checked=true
 
                             if(allbtn==1){
