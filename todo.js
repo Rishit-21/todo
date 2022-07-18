@@ -52,7 +52,9 @@ let editFlag = false
 let currentId
 let searched
 
-let allbtn
+let allbtn=0
+
+
 
 
 
@@ -83,6 +85,7 @@ const displayTask=function(taskArray){
         })
     }
 }
+let tasks
 
 
 add_btn.addEventListener('click',function(){
@@ -97,6 +100,20 @@ search_btn.addEventListener('click',function(){
     search_btn.classList.add('btn--active')
     //box.style.display='block'
 })
+
+function main(){
+    if(allbtn==0){
+        tasks=taskArray
+    }
+    else if(allbtn==1){
+        tasks=taskArray.filter(el=>el.checked==false)
+    }
+    else if(allbtn==2){
+        tasks=taskArray.filter(el=>el.checked==true)
+    }
+    return tasks
+    
+}
 
 
 
@@ -157,15 +174,16 @@ const add = function(){
     btn_0.classList.add('btn--active')
 }
 const search =function(){
+    main()
     input=text.value
     input=input.toLowerCase()
-    searched = taskArray.filter(el=>el.name.toLowerCase().includes(input));
+    searched = tasks.filter(el=>el.name.toLowerCase().includes(input));
     //check.checked=true
     // if(searched.length!==0){
         // displayTask(searched)
     // }
     if(input==''){
-        displayTask(taskArray)
+        displayTask(tasks)
     }else {
         displayTask(searched)
     }
@@ -173,13 +191,14 @@ const search =function(){
         console.log(searched)    
 }
  sort.addEventListener('click',function(){
+    main()
     let c
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
     switch(sorting){
         case "A-Z":
             //sort.selectedIndex=0
-           task= taskArray.slice().sort((a,b)=>{
+           task= tasks.slice().sort((a,b)=>{
             if(a.name<b.name){
                 return -1
             }
@@ -197,7 +216,7 @@ const search =function(){
             break;
         case 'Z-A':
             //sort.selectedIndex=0
-            task=taskArray.slice().sort((a,b)=>{
+            task=tasks.slice().sort((a,b)=>{
                 if(b.name<a.name){
                     return -1
                 }
@@ -213,7 +232,7 @@ const search =function(){
             break;
         case 'newest':
             //sort.selectedIndex=0
-            task = taskArray.slice().sort((a,b)=>{
+            task = tasks.slice().sort((a,b)=>{
             return b.id-a.id
             })
             displayTask(task)
@@ -221,7 +240,7 @@ const search =function(){
         case "oldest":
             // sort.selectedIndex=0
 
-                task=taskArray.slice().sort((a,b)=>a.id-b.id)
+                task=tasks.slice().sort((a,b)=>a.id-b.id)
                 displayTask(task)
                 break;
         
@@ -232,6 +251,7 @@ const search =function(){
 
 
 action.addEventListener('click',function(){
+    main()
     let actions=action.options[action.selectedIndex].value;
     console.log(actions)
 
@@ -239,13 +259,13 @@ action.addEventListener('click',function(){
         case "selectAll":
             action.selectedIndex=0
 
-            taskArray.forEach(el=>{
+            tasks.forEach(el=>{
                 if(active==1){
                     if(searched){
                         searched.forEach(eli=>{
                             eli.checked=true
-                            const index=taskArray.findIndex(x=>x.id==eli.id)
-                            taskArray[index].checked=true
+                            const index=tasks.findIndex(x=>x.id==eli.id)
+                            tasks[index].checked=true
                             displayTask(searched)
                             
                             
@@ -253,27 +273,31 @@ action.addEventListener('click',function(){
                     }
                     else{
                         el.checked=true
-                        displayTask(taskArray)
+                        displayTask(tasks)
 
                     }
                 }
-                else{
 
+
+                
+
+
+                else{
                     el.checked=true
-                    displayTask(taskArray)
+                    displayTask(tasks)
                 }
             })
-            console.log(taskArray)
+            console.log(tasks)
             break;
         case 'unselectAll':
             action.selectedIndex=0
-            taskArray.forEach(el=>{
+            tasks.forEach(el=>{
                 if(active==1){
                     if(searched){
                         searched.forEach(eli=>{
                             eli.checked=false
-                            const index=taskArray.findIndex(x=>x.id==eli.id)
-                            taskArray[index].checked=false
+                            const index=tasks.findIndex(x=>x.id==eli.id)
+                            tasks[index].checked=false
                             displayTask(searched)
                             
                             
@@ -281,7 +305,7 @@ action.addEventListener('click',function(){
                     }
                     else{
                         el.checked=false
-                    displayTask(taskArray)
+                    displayTask(tasks)
 
                     }
 
@@ -289,7 +313,7 @@ action.addEventListener('click',function(){
                 else{
 
                     el.checked=false
-                    displayTask(taskArray)
+                    displayTask(tasks)
                 }
 
             })
@@ -303,31 +327,31 @@ action.addEventListener('click',function(){
                     searched=searched.filter(el=>el.checked==true)
                     console.log(searched)
                     searched.forEach(eli=>{
-                        const index=taskArray.findIndex(x=>x.id==eli.id)
-                        let i=taskArray[index].id
+                        const index=tasks.findIndex(x=>x.id==eli.id)
+                        let i=tasks[index].id
                         console.log(i)
                         //console.log(taskArray)
-                        taskArray=taskArray.filter(el=> el.id!==i)
-                        displayTask(taskArray)
+                        tasks=tasks.filter(el=> el.id!==i)
+                        displayTask(tasks)
     
                         
                         
                     })
                 }
                 else{
-                    taskArray=taskArray.filter(el=>el.checked==false)
-                    displayTask(taskArray)
+                    tasks=tasks.filter(el=>el.checked==false)
+                    displayTask(tasks)
 
                 }
 
             }
             else{
-                taskArray=taskArray.filter(el=>el.checked==false)
+                tasks=tasks.filter(el=>el.checked==false)
                 task=task.filter(el=>el.checked==false)
-                displayTask(taskArray)
+                displayTask(tasks)
             }
  
-            console.log(taskArray)
+            console.log(tasks)
             break;
         default:
 
@@ -339,21 +363,23 @@ action.addEventListener('click',function(){
 btn_0.addEventListener('click',function(){
     allbtn=0
     console.log('0')
+    main()
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.remove('btn--active')
     if(task.length>0){
-        console.log(taskArray)
+        console.log(task)
         displayTask(task)
     }
     else{
         console.log(taskArray)
-        displayTask(taskArray)
+        displayTask(tasks)
     }
 })
 btn_1.addEventListener('click',function(){
     allbtn=1
     console.log('1')
+    main()
     btn_0.classList.remove('btn--active')
     btn_1.classList.add('btn--active')
     btn_2.classList.remove('btn--active')
@@ -364,7 +390,7 @@ btn_1.addEventListener('click',function(){
 
     }
     else{
-        array=taskArray.filter(el=>el.checked==false)
+        array=tasks.filter(el=>el.checked==false)
         console.log(array)
         displayTask(array)
     }
@@ -384,7 +410,7 @@ btn_2.addEventListener('click',function(){
 
     }
     else{
-        array=taskArray.filter(el=>el.checked==true);
+        array=tasks.filter(el=>el.checked==true);
         displayTask(array)
         console.log(array)
 
