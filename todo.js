@@ -12,7 +12,7 @@ let editBox = document.querySelector('span');
 let edit_btn = document.querySelector('.edit');
 let deletee_btn = document.querySelector('.delete');
 
-
+let c;
 
 
 
@@ -85,7 +85,7 @@ const displayTask=function(taskArray){
         })
     }
 }
-let tasks
+let tasks=[]
 
 
 add_btn.addEventListener('click',function(){
@@ -185,8 +185,10 @@ const add = function(){
     input=input.trim()
     if(input){
         taskArray.push({id:++ids,name:input,checked:false})
-        console.log(taskArray)
-        displayTask(taskArray)
+            console.log(taskArray)
+            displayTask(taskArray)
+        
+      
     }
     console.log(taskArray)
     btn_0.classList.add('btn--active')
@@ -211,9 +213,7 @@ const search =function(){
    
         console.log(searched)    
 }
- sort.addEventListener('click',function(){
-    main()
-    let c
+ function sortings(){
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
     switch(sorting){
@@ -268,7 +268,20 @@ const search =function(){
             
 
     }
+ }
+
+
+
+
+
+
+
+sort.addEventListener('click',function(){
+    main()
+     c=0
+    sortings(tasks)
 })
+
 
 
 action.addEventListener('click',function(){
@@ -485,6 +498,9 @@ btn_2.addEventListener('click',function(){
                 console.log("active=0")
                 add(taskArray);
                 text.value='';
+                if(c==0){
+                   sortings(taskArray);
+               }
             }
             
         }
