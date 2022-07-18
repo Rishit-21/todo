@@ -63,7 +63,7 @@ body {
   float: right;
 }
 .taskList .editss input {
-  width: 150%;
+  width: 115%;
   margin: 0;
   padding: 0;
   justify-content: space-between;
@@ -194,7 +194,7 @@ body {
     flex-direction: row;
   }
 }
-@media screen {
+@media only screen and (min-width: 1440px) {
   .heading {
     width: auto;
     align-items: center;
@@ -218,6 +218,7 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
+    margin-left: 600px;
   }
   .allOther .add-search-btn {
     display: flex;
