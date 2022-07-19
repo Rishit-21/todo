@@ -157,7 +157,9 @@ function checks(i){
 
 function deletes(i){
     taskArray=taskArray.filter(el=>el.id!==i)
-    displayTask(taskArray)
+    tasks=tasks.filter(el=>el.id!==i)
+    //displayTask(tasks)
+    sortings(tasks)
 }
 function edits(i){
     editFlag=true
