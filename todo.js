@@ -134,7 +134,7 @@ function checks(i){
             }
             else{
                 console.log('helllo')
-                displayTask(taskArray)
+                sortings(taskArray)
             }
         }
         else if(taskArray[index].checked==false){
