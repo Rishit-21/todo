@@ -373,7 +373,6 @@ action.addEventListener('click',function(){
                     el.checked=false
                     displayTask(tasks)
                   }
-
                    
                 }
 
@@ -394,10 +393,7 @@ action.addEventListener('click',function(){
                         //console.log(taskArray)
                         tasks=tasks.filter(el=> el.id!==i)
                         taskArray=taskArray.filter(el=>el.id!==i)
-                        displayTask(tasks)
-    
-                        
-                        
+                        displayTask(tasks)                                                
                     })
                 }
                 else{
@@ -433,9 +429,12 @@ btn_0.addEventListener('click',function(){
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.remove('btn--active')
+       if(c==0){
         sortings(tasks)
-        //console.log(taskArray)
-        //displayTask(tasks)
+       }
+       else{
+        displayTask(tasks)
+       }
     
 })
 btn_1.addEventListener('click',function(){
@@ -446,10 +445,14 @@ btn_1.addEventListener('click',function(){
     btn_1.classList.add('btn--active')
     btn_2.classList.remove('btn--active')
     main()
-    array=task.filter(el=>el.checked==false)
-    sortings(array)
-        console.log(array)
-        //displayTask(array)
+    array=tasks.filter(el=>el.checked==false)
+    if(c==0){
+        sortings(array)
+       }
+       else{
+        displayTask(array)
+       }
+    
     
     
 
@@ -466,9 +469,12 @@ btn_2.addEventListener('click',function(){
 
        //sortings(tasks)
         array=tasks.filter(el=>el.checked==true);
-        sortings(array)
-        //displayTask(array)
-        console.log(array)
+        if(c==0){
+            sortings(array)
+           }
+           else{
+            displayTask(array)
+           }
         
     
 
