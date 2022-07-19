@@ -172,7 +172,12 @@ function editEnter(e){
         taskArray[index].name=document.querySelector('.texts').value
         editFlag=false;
         currentId=0
-        displayTask(taskArray)
+        if(c==0){
+            sortings(taskArray)
+        }
+        else{
+            displayTask(taskArray)
+        }
     }
 }
 
