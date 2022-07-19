@@ -165,11 +165,6 @@ function edits(i){
     editFlag=true
     currentId=i
     displayTask(taskArray)
-
-    console.log("aass")
-    //document.querySelector('.editss').style.display='block';
-    //taskName.style.display='none';
-    //displayTask(taskArray)
 }
 function editEnter(e){
     if(e.key==='Enter'){
@@ -203,10 +198,6 @@ const search =function(){
     input=text.value
     input=input.toLowerCase()
     searched = tasks.filter(el=>el.name.toLowerCase().includes(input));
-    //check.checked=true
-    // if(searched.length!==0){
-        // displayTask(searched)
-    // }
     if(input==''){
         displayTask(tasks)
     }else {
