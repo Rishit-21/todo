@@ -213,7 +213,7 @@ const search =function(){
    
         console.log(searched)    
 }
- function sortings(){
+ function sortings(task){
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
     switch(sorting){
@@ -268,6 +268,7 @@ const search =function(){
             
 
     }
+   //return task
  }
 
 
@@ -429,65 +430,54 @@ action.addEventListener('click',function(){
 
     }
 })
-
+let tasked
 btn_0.addEventListener('click',function(){
     allbtn=0
     console.log(allbtn)
     main()
+    //sortings()
    
     btn_0.classList.add('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.remove('btn--active')
-    if(task.length>0){
-        console.log(task)
-        displayTask(task)
-    }
-    else{
+        sortings(tasks)
         //console.log(taskArray)
-        displayTask(tasks)
-    }
+        //displayTask(tasks)
+    
 })
 btn_1.addEventListener('click',function(){
     allbtn=1
+    //sortings()
     console.log(allbtn)
     btn_0.classList.remove('btn--active')
     btn_1.classList.add('btn--active')
     btn_2.classList.remove('btn--active')
     main()
-    if(task.length>0){
-        array=task.filter(el=>el.checked==false)
+    array=task.filter(el=>el.checked==false)
+    sortings(array)
         console.log(array)
-        displayTask(array)
-        
-    }
-    else{
-        array=tasks.filter(el=>el.checked==false)
-        console.log(array)
-        displayTask(array)
-    }
+        //displayTask(array)
+    
     
 
 })
 btn_2.addEventListener('click',function(){
     allbtn=2
+    //sortings()
     console.log(allbtn)
     btn_0.classList.remove('btn--active')
     btn_1.classList.remove('btn--active')
     btn_2.classList.add('btn--active')
     main()
     
-    if(task.length>0){
-        array=task.filter(el=>el.checked==true);
-        displayTask(array)
-        console.log(array)
-        
-    }
-    else{
+
+       //sortings(tasks)
         array=tasks.filter(el=>el.checked==true);
-        displayTask(array)
+        sortings(array)
+        //displayTask(array)
         console.log(array)
         
-    }
+    
 
 })
 
