@@ -130,7 +130,7 @@ function checks(i){
     
             }
             else{
-                console.log('helllo')
+              
                 sortings(taskArray)
             }
         }
@@ -146,7 +146,7 @@ function checks(i){
         if(task.length>0){
             if(task[index].checked){
                 array=task.filter(el=>el.checked==false)
-                console.log(array)
+               
                 displayTask(array)
             }   
         }
@@ -196,7 +196,7 @@ const add = function(){
     input=input.trim()
     if(input){
         taskArray.push({id:++ids,name:input,checked:false})
-            console.log(taskArray)
+           
             displayTask(taskArray)
         
       
@@ -218,43 +218,57 @@ const search =function(){
         displayTask(searched)
     }
    
-        console.log(searched)    
+        
 }
  function sortings(task){
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
+    // tasks.forEach(el=>{
+        // if(isNaN(el.name))
+    // })
     switch(sorting){
         case "A-Z":
             //sort.selectedIndex=0
            task= tasks.slice().sort((a,b)=>{
-            if(a.name<b.name){
-                return -1
-            }
-            else if(a.name>b.name){
-                return 1
-            }
-            else{
-                return 0
-
-            }
-           })
-            displayTask(task)
-            console.log(task)
-            console.log(taskArray)
-            break;
-        case 'Z-A':
-            //sort.selectedIndex=0
-            task=tasks.slice().sort((a,b)=>{
-                //return b-a
-                if(b.name<a.name){
+            if(isNaN(a.name)){
+                if(a.name<b.name){
                     return -1
                 }
-                else if(b.name>a.name){
+                else if(a.name>b.name){
                     return 1
                 }
                 else{
                     return 0
     
+                }
+
+            }
+            else{
+                a.name-b.name
+            }
+           })
+            displayTask(task)
+           
+            break;
+        case 'Z-A':
+            //sort.selectedIndex=0
+            task=tasks.slice().sort((a,b)=>{
+                //return b-a
+                if(isNaN(a.name)){
+                    if(b.name<a.name){
+                        return -1
+                    }
+                    else if(b.name>a.name){
+                        return 1
+                    }
+                    else{
+                        return 0
+        
+                    }
+                }
+                else{
+                    b.name-a.name
+
                 }
             });
             displayTask(task);
@@ -272,6 +286,8 @@ const search =function(){
                 task=tasks.slice().sort((a,b)=>a.id-b.id)
                 displayTask(task)
                 break;
+        default:
+            displayTask(tasks)
         
             
 
@@ -286,7 +302,7 @@ sort.addEventListener('click',function(){
 action.addEventListener('click',function(){
     main()
     let actions=action.options[action.selectedIndex].value;
-    console.log(actions)
+   
 
     switch(actions){
         case "selectAll":
@@ -418,8 +434,7 @@ action.addEventListener('click',function(){
  
             console.log(tasks)
             break;
-        default:
-
+      
 
 
     }
