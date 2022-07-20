@@ -114,9 +114,6 @@ function main(){
     return tasks
     
 }
-
-
-
 function checks(i){
     const index = taskArray.findIndex(x=> x.id ===i)
     taskArray[index].checked=!taskArray[index].checked
@@ -170,7 +167,13 @@ function deletes(i){
 function edits(i){
     editFlag=true
     currentId=i
-    displayTask(taskArray)
+    if(c==0){
+        sortings(taskArray)
+    }
+    else{
+
+        displayTask(taskArray)
+    }
 }
 function editEnter(e){
     if(e.key==='Enter'){
@@ -274,21 +277,11 @@ const search =function(){
     }
    //return task
  }
-
-
-
-
-
-
-
 sort.addEventListener('click',function(){
     main()
      c=0
     sortings(tasks)
 })
-
-
-
 action.addEventListener('click',function(){
     main()
     let actions=action.options[action.selectedIndex].value;
