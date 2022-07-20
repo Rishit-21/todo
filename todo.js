@@ -51,7 +51,8 @@ let input
 let editFlag = false
 let currentId
 let searched
-
+let num=[]
+let str =[]
 let allbtn=0
 
 
@@ -220,17 +221,23 @@ const search =function(){
    
         
 }
+
  function sortings(task){
     let sorting = sort.options[sort.selectedIndex].value;
     console.log(sorting)
     // tasks.forEach(el=>{
-        // if(isNaN(el.name))
+    //     if(isNaN(el.name)){
+    //         str.push(el.name)
+    //     }
+    //     else{
+    //         num.push(el.name)
+    //     }
     // })
     switch(sorting){
         case "A-Z":
             //sort.selectedIndex=0
            task= tasks.slice().sort((a,b)=>{
-            if(isNaN(a.name)){
+            if(isNaN(a.name)|| isNaN(b.name)){
                 if(a.name<b.name){
                     return -1
                 }
@@ -241,12 +248,16 @@ const search =function(){
                     return 0
     
                 }
+                 }
+                         else{
+                            return a.name-b.name
+                 } 
 
-            }
-            else{
-                a.name-b.name
-            }
-           })
+                
+                
+            })
+                // num=num.slice().sort((a,b)=>a-b)
+                // task=num.concat(str)
             displayTask(task)
            
             break;
@@ -254,7 +265,7 @@ const search =function(){
             //sort.selectedIndex=0
             task=tasks.slice().sort((a,b)=>{
                 //return b-a
-                if(isNaN(a.name)){
+                if(isNaN(a.name)||isNaN(b.name)){
                     if(b.name<a.name){
                         return -1
                     }
@@ -267,7 +278,7 @@ const search =function(){
                     }
                 }
                 else{
-                    b.name-a.name
+                    return b.name-a.name
 
                 }
             });
