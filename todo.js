@@ -245,6 +245,7 @@ const search =function(){
         case 'Z-A':
             //sort.selectedIndex=0
             task=tasks.slice().sort((a,b)=>{
+                //return b-a
                 if(b.name<a.name){
                     return -1
                 }
