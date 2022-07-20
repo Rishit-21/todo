@@ -156,10 +156,16 @@ function checks(i){
 }
 
 function deletes(i){
+    main()
     taskArray=taskArray.filter(el=>el.id!==i)
     tasks=tasks.filter(el=>el.id!==i)
     //displayTask(tasks)
-    sortings(tasks)
+    if(c==0){
+        sortings(tasks)
+    }
+    else{
+        displayTask(tasks)
+    }
 }
 function edits(i){
     editFlag=true
